@@ -45,6 +45,7 @@ class LicenseePluginFixtureTest {
       "dependency-substitution-replace-local-with-remote",
       "dependency-substitution-replace-remote-with-local-ignored",
       "dependency-substitution-replace-remote-with-include-build-ignored",
+      "dependency-verification-disabled",
       "exclude-ignored",
       "flat-dir-repository-ignored",
       "ignore-group",
