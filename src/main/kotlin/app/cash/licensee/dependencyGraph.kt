@@ -164,7 +164,7 @@ internal fun loadPomInfo(
     .detachedConfiguration(pomDependency)
     .apply {
       // See https://docs.gradle.org/current/userguide/dependency_verification.html#sub:disabling-specific-verification.
-//      resolutionStrategy.disableDependencyVerification()
+      resolutionStrategy.disableDependencyVerification()
     }
     .resolvedConfiguration
     .lenientConfiguration

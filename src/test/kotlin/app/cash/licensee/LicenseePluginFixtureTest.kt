@@ -45,7 +45,6 @@ class LicenseePluginFixtureTest {
       "dependency-substitution-replace-local-with-remote",
       "dependency-substitution-replace-remote-with-local-ignored",
       "dependency-substitution-replace-remote-with-include-build-ignored",
-      "dependency-verification-disabled",
       "exclude-ignored",
       "flat-dir-repository-ignored",
       "ignore-group",
@@ -210,6 +209,19 @@ class LicenseePluginFixtureTest {
       .flatMap { it.parameters[0].getAnnotation(TestParameter::class.java).value.toList() }
     val actualDirs = fixturesDir.listFiles().filter { it.isDirectory }.map { it.name }
     assertThat(expectedDirs).containsExactlyElementsIn(actualDirs)
+  }
+
+  @Test fun dependencyVerificationIsUnaffected(
+    @TestParameter(
+      "dependency-verification-disabled",
+      ) fixtureName: String,
+    ) {
+    GradleRunner.create()
+      .withProjectDir(File(fixturesDir, fixtureName))
+      .withDebug(true) // Run in-process
+      .withArguments("licensee", ":other:build", "--rerun-tasks", "--stacktrace", versionProperty)
+      .forwardOutput()
+      .build()
   }
 
   private fun createRunner(fixtureDir: File): GradleRunner {

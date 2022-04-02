@@ -22,7 +22,7 @@ apply plugin: 'java-library'
 apply plugin: 'app.cash.licensee'
 
 dependencies {
-  implementation 'com.example:example:1.0.0'
+  implementation 'androidx.annotation:annotation:1.3.0'
 }
 
 licensee {
@@ -30,7 +30,5 @@ licensee {
 }
 
 repositories {
-  maven {
-    url "file://${rootDir.absolutePath}/repo"
-  }
+  google()
 }
